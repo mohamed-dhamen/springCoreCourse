@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:p="http://www.springframework.org/schema/p"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+               http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+    <bean id="module1" class="org.example.Module">
+        <constructor-arg value="language java" ></constructor-arg>
+        <constructor-arg value="16" ></constructor-arg>
+    </bean>
+    <bean id="module2" class="org.example.Module">
+        <constructor-arg value="language c" ></constructor-arg>
+        <constructor-arg value="16" ></constructor-arg>
+    </bean>
+    <bean id="module3" class="org.example.Module">
+        <constructor-arg value="language python" ></constructor-arg>
+        <constructor-arg value="16" ></constructor-arg>
+    </bean>
+
+
+    <bean id="address" class="org.example.Address">
+        <constructor-arg value="Taza "></constructor-arg>
+        <constructor-arg value="300 RUE FES "></constructor-arg>
+        <constructor-arg value="MAROC"></constructor-arg>
+    </bean>
+
+    <bean id="studentBean" class="org.example.Student">
+    <constructor-arg value="MOHAMED" type="String"></constructor-arg>
+        <constructor-arg >
+            <map>
+                <entry key="1" value-ref="module1"></entry>
+                <entry key="2" value-ref="module2"></entry>
+                <entry key="2" value-ref="module3"></entry>
+            </map>
+        </constructor-arg>
+        <constructor-arg >
+            <ref bean="address"/>
+        </constructor-arg>
+
+    <constructor-arg value="DHAMEN" type="String"></constructor-arg>
+    </bean>
+</beans>
