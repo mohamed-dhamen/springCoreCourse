@@ -5,6 +5,11 @@ import org.example.repository.ProductRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+
+import javax.sql.DataSource;
+import java.sql.DriverManager;
 
 @Configuration
 @ComponentScan(basePackages = {"org.example.beans","org.example.services","org.example.repository"})
@@ -48,6 +53,21 @@ public class ProjectConfig {
             productRepository.setUserName("MOHAMED");
             productRepository.setUserPassword("12345662");
         return  productRepository;
+    }
+
+    @Bean
+    public DataSource getDataSourc(){
+
+        var datasource=new DriverManagerDataSource();
+            datasource.setUrl("");
+            datasource.setUsername("");
+            datasource.setPassword("");
+
+            return datasource;
+    }
+    @Bean("MysqlJdbcConnection")
+    public JdbcTemplate getjdbcTemplate(){
+        return  new JdbcTemplate(getDataSourc());
     }
 
 }
